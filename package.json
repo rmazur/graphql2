@@ -16,5 +16,13 @@
     "eslint": "^5.6.0",
     "express": "^4.16.3",
     "graphql": "^14.0.2"
+  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rmazur/graphql2.git"
   }
 }

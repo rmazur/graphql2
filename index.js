@@ -1,7 +1,10 @@
 const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 
-const PORT = 4000;
+// const PORT = 4000;
+
+const PORT = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+const IP = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 const app = express();
 
@@ -41,6 +44,6 @@ const resolvers = {
 const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });
 
-app.listen({ port: PORT }, () =>
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+app.listen({ port: PORT },{ ip: IP }, () =>
+  console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
 );
